@@ -1,0 +1,21 @@
+{
+    "connection": {
+        "port": "COM8",
+        "baud_rate": 115200
+    },
+    "sensors": [
+        "Temperature",
+        "Vibration",
+        "Speed",
+        "Pressure",
+        "Optical Counter"
+    ],
+    "limits": {
+        "temperature": {"min": 20.0, "max": 45.0},
+        "vibration":   {"min": 0.0,  "max": 50.0},
+        "speed":       {"min": 0.0,  "max": 150.0},
+        "pressure":    {"min": 5.0,  "max": 15.0},
+        "counter":     {"min": 0.0,  "max": 1000.0}
+    },
+    "password": "admin"
+}
