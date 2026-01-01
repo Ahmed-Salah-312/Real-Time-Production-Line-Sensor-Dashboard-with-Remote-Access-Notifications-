@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1022</width>
+    <height>867</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Production Line Sensor Dashboard </string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>logo2424.png</normaloff>logo2424.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #ffffff;
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">/* =========================
+   QTabWidget – Base
+   ========================= */
+QTabWidget::pane {
+    border: 1px solid #142a5c;
+    background: #f5f8fc;
+    top: -1px;
+}
+
+/* =========================
+   QTabBar – Base Tabs
+   ========================= */
+QTabBar::tab {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 11px;
+    font-weight: 600;
+
+    padding: 10px 20px;
+    margin-right: 4px;
+
+    border: 0px solid #142a5c;
+    border-bottom: none;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    min-width: 120px;
+}
+
+/* =========================
+   Hover (Soft Cyan Accent)
+   ========================= */
+QTabBar::tab:hover {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+/* =========================
+   Selected Tab (Same as Hover)
+   ========================= */
+QTabBar::tab:selected {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    border: 0px solid #142a5c;
+    border-bottom: 2px solid #4fc3dc;
+}
+
+/* Lift selected tab slightly (3D feel) */
+QTabBar::tab:selected {
+    margin-top: -2px;
+}
+
+/* =========================
+   Disabled Tab
+   ========================= */
+QTabBar::tab:disabled {
+    background: #bfcbe6;
+    color: #6b7aa8;
+}
+</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>22</width>
+        <height>22</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="icon">
+        <iconset>
+         <normaloff>Icons/icons8-dashboard-22.png</normaloff>Icons/icons8-dashboard-22.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Dashboard</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="System_Status_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color:lightgreen;</string>
+          </property>
+          <property name="text">
+           <string>  System Status : No Alarms</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="Sensors_groupBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>280</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="title">
+           <string>Sensors:</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_13">
+           <item row="0" column="0">
+            <widget class="QTableWidget" name="tableWidget">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="horizontalScrollBarPolicy">
+              <enum>Qt::ScrollBarAlwaysOn</enum>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::AdjustToContents</enum>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>240</number>
+             </attribute>
+             <attribute name="horizontalHeaderHighlightSections">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderStretchLastSection">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderStretchLastSection">
+              <bool>true</bool>
+             </attribute>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="textAlignment">
+               <set>AlignCenter</set>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>2</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Sensor name </string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Latest value </string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Timestamp</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Status </string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="Plots_groupBox">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="title">
+           <string>Plots:</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QGroupBox" name="groupBox">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Temperature Sensor</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <widget class="QGraphicsView" name="temp_graphicsView"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_2">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Vibration Sensor</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="0" column="0">
+                 <widget class="QGraphicsView" name="vibration_graphicsView"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Speed Sensor</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0">
+                 <widget class="QGraphicsView" name="speed_graphicsView"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QGroupBox" name="groupBox_6">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Pressure Sensor</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <item row="0" column="0">
+                 <widget class="QGraphicsView" name="pressure_graphicsView"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_4">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string> Optical Counter</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="0">
+                 <widget class="QGraphicsView" name="optical_counters_graphicsView"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="icon">
+        <iconset>
+         <normaloff>Icons/icons8-alarm-22.png</normaloff>Icons/icons8-alarm-22.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Alarm Log</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_11">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QTextBrowser" name="Alarm_Log_textBrowser"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Clear_Alarms_Button">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 20px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #142a5c;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+QPushButton:pressed {
+    background-color: #1f3c88;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #9fb0d9;
+    color: #eeeeee;
+    border: 1px solid #7a8bb5;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Clear Alarms</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="icon">
+        <iconset>
+         <normaloff>Icons/icons8-maintenance-22.png</normaloff>Icons/icons8-maintenance-22.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Maintenance Console</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Live Log Viewer:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="Live_Log_Viewer_textBrowser"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Restart_Simulation_Button">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 20px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #142a5c;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+QPushButton:pressed {
+    background-color: #1f3c88;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #9fb0d9;
+    color: #eeeeee;
+    border: 1px solid #7a8bb5;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Restart Simulator</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Force_Refresh_Button">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 20px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #142a5c;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+QPushButton:pressed {
+    background-color: #1f3c88;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #9fb0d9;
+    color: #eeeeee;
+    border: 1px solid #7a8bb5;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Force Refresh</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Snapshot_of_Values_Button">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 20px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #142a5c;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+QPushButton:pressed {
+    background-color: #1f3c88;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #9fb0d9;
+    color: #eeeeee;
+    border: 1px solid #7a8bb5;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>snapshot of values</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Clear_Alarms_Maintainance_Button">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2a4da3,
+        stop:1 #1f3c88
+    );
+
+    color: white;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 20px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #142a5c;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4fc3dc,
+        stop:1 #1f3c88
+    );
+}
+
+QPushButton:pressed {
+    background-color: #1f3c88;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #9fb0d9;
+    color: #eeeeee;
+    border: 1px solid #7a8bb5;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Clear Alarms</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>V1.0.0</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1022</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

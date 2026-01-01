@@ -1,0 +1,9 @@
+37.5,10.2,88.9,12.5,45,14:30:55
+
+The code splits this string by the comma ,.
+37.5 --> Temperature (Index 0)
+10.2 --> Vibration (Index 1)
+88.9 --> Speed (Index 2)
+12.5 --> Pressure (Index 3)
+45 --> Optical Counter (Index 4)
+14:30:55 --> Timestamp (Index 5)
