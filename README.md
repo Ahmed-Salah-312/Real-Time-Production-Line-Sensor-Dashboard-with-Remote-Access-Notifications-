@@ -123,12 +123,17 @@ graph TD;
 ## 📂 Repository Structure
 
 ```text
-├── assets/                 # Icons and logos
-├── Backend_With_Random_Data.py  # Simulation logic
-├── Backend_With_Serial_Data.py  # Real hardware logic
-├── Dialogs.py              # Custom popup classes (Password, Alerts)
-├── front.py                # PyQt5 UI layout (Generated)
-└── README.md               # Documentation
+├── Icons/                           # Folder containing deleted icon assets
+├── Backend_With_Random_Data.py      # Main application (Simulation Mode)
+├── Backend_With_Serial_Data.py      # Main application (Real Hardware Mode)
+├── Config.json                     # Configuration file (Ports, Limits, Passwords)
+├── Dialogs.py                       # Custom popup classes (Password, Alerts)
+├── front.py                         # Compiled Python UI file (from Qt Designer)
+├── Front.ui                         # Source Qt Designer file
+├── serialcode.py                    # Standalone serial reader script for testing
+├── requirements.txt                 # Python dependencies list
+├── logo2424.ico                     # Application Icon
+└── Example for the incoming Serial data.txt  # Reference file for data format
 ```
 
 ## 🛡️ License
