@@ -262,7 +262,7 @@ class MainWindow(QMainWindow):
     def setup_system_features(self):
         """Sets up the System Tray icon (bottom right of Windows taskbar)."""
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon("../logo2424.png"))
+        self.tray_icon.setIcon(QIcon("logo2424.png"))
 
         # Right-click menu for the tray icon
         tray_menu = QMenu()
